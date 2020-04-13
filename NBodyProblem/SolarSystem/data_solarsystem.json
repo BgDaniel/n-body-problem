@@ -9,7 +9,13 @@
    },     
    "Earth" : {
       "mass" : 1.0,
-      "diameter" : 1.0  
+      "diameter": 1.0,
+      "moons": {
+        "Moon": {
+          "mass": 0.0123032,
+          "diameter": 0.2731
+        }
+      }  
    },  
    "Mars" : {
       "mass" : 0.10745,

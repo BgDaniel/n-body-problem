@@ -9,12 +9,15 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace NBodyProblem.SolarSystem
-{    
+{
     public static class SolarSystemHelper
     {
-        public static Planets GetPlanets()
-        {
+        public const string mass = nameof(mass);
+        public const string diameter = nameof(diameter);
+        public const string moons = nameof(moons);
 
+        public static Planets GetPlanets(List<String> names = null)
+        {
             var planets = new Planets();
 
             var execturingAssembly = Assembly.GetExecutingAssembly();
@@ -22,19 +25,33 @@ namespace NBodyProblem.SolarSystem
             {
                 using (var streamReader = new StreamReader(resourceStream))
                 {
-                    var dataSolarSystem = JsonConvert.DeserializeObject<Dictionary<string, object>>(streamReader.ReadToEnd());                    
+                    var dataSolarSystem = JsonConvert.DeserializeObject<Dictionary<string, object>>(streamReader.ReadToEnd());
 
                     foreach (var kvp in dataSolarSystem)
                     {
                         var name = kvp.Key;
-                        var data = ((JObject)(kvp.Value)).ToObject<Dictionary<string, double>>();
-                        planets.Add(new Planet(kvp.Key, data["mass"], data["diameter"]));
-                    }                    
+
+                        if(names.Any() && !names.Contains(name))
+                            continue;
+
+                        var data = ((JObject)(kvp.Value)).ToObject<Dictionary<string, object>>();
+
+                        var _moons = new Planets();
+                        if (data.ContainsKey(moons))
+                        {
+                            foreach (var moon in ((JObject)(data[moons])).ToObject<Dictionary<string, Dictionary<string, double>>>())
+                            {
+                                _moons.Add(new Planet(moon.Key, (double)(moon.Value[mass]), (double)(moon.Value[diameter])));
+                            }
+                        }
+
+                        planets.Add(new Planet(name, (double)data[mass], (double)data[diameter], _moons));
+                    }
                 }
             }
 
             return planets;
-        }
+        }        
     }
 
     public sealed class SolarSystem

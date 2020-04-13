@@ -6,17 +6,48 @@ using System.Threading.Tasks;
 
 namespace NBodyProblem.SolarSystem
 {
-    public class Planets : List<Planet> { }
+    public class Planets : List<Planet> 
+    {
+        public List<Body> ToBodies()
+        {
+            var bodies = new List<Body>();
+            
+            foreach (var planet in this)
+                bodies.Add((Body)planet);
 
-    public sealed class Planet : Body
+            return bodies;
+        }
+    }
+
+    public sealed class Planet : Body, IEquatable<Planet>
     {        
         public String Name { get; private set; }
         public double Diameter { get; private set; }
+        public Planets Moons { get; private set; }
 
-        public Planet(string name, double mass, double diameter) : base(mass)
+        public Planet(string name, double mass, double diameter, Planets moons = null) : base(mass)
         {
             Name = name;
             Diameter = diameter;
+            Moons = moons;
+        }
+
+        public bool Equals(Planet other)
+        {
+            if (other.GetType() == typeof(Planet))
+            {
+                if (Name == other.Name)
+                    return true;
+                else
+                    return false;
+            }
+            else
+                return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return Name.GetHashCode();
         }
     }
 

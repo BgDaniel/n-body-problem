@@ -11,16 +11,13 @@ namespace NBodyProblem
     {
         private const double GRAVITATIONAL_CONSTANT = 6.6743 * 10e-11;
 
-        public static Vector<double> Force(Body body, Neighbours neighbours)
+        public static Vector<double> Force(Body body, Body neighbour)
         {
             Vector<double> force = Vector<double>.Build.Dense(3);
 
-            foreach(var neighbour in neighbours)
-            {
-                var bodyToNeighbour = neighbour.Position - body.Position;
-                var distance = Math.Sqrt(bodyToNeighbour.Norm(2));
-                force += GRAVITATIONAL_CONSTANT * body.Mass * neighbour.Mass * bodyToNeighbour / (distance * distance * distance);
-            }
+            var bodyToNeighbour = neighbour.Position - body.Position;
+            var distance = Math.Sqrt(bodyToNeighbour.Norm(2));
+            force += GRAVITATIONAL_CONSTANT * body.Mass * neighbour.Mass * bodyToNeighbour / (distance * distance * distance);
 
             return force;
         }

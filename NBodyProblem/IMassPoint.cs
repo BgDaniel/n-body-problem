@@ -13,7 +13,5 @@ namespace NBodyProblem
         Vector<double> Velocity { get; }
         Vector<double> Acceleration { get; }
         double Mass { get; }
-        Neighbours Neighbours { get; }
-        void Evolve(double dt);
     }
 }

@@ -11,7 +11,7 @@ namespace Simulation
     {
         static void Main(string[] args)
         {
-            var solarSystem = SolarSystem.GetInstance;
+            var system = PlanetarySystem.Create(new List<String>() { "Earth" });                
         }
     }
 }

@@ -7,20 +7,20 @@ using System.Threading.Tasks;
 
 namespace NBodyProblem
 {
-    public class Neighbours : List<Body> { }
-
     public class Body : IMassPoint
     { 
-        public Vector<double> Position { get; private set; }
-        public Vector<double> Velocity { get; private set; }
-        public Vector<double> Acceleration { get; private set; }
+        public Vector<double> Position { get; set; }
+        public Vector<double> InitialPosition { get; private set; }
+        public Vector<double> Velocity { get; set; }
+        public Vector<double> InitialVelocity { get; private set; }
+        public Vector<double> Acceleration { get; set; }
         public double Mass { get; private set; }
-        public Neighbours Neighbours { get; private set; }
 
-        public Body(Vector<double> position, Vector<double> velocity, Vector<double> acceleration, double mass)
+
+        public Body(Vector<double> initialPosition, Vector<double> initialVelocity, Vector<double> acceleration, double mass)
         {
-            Position = position;
-            Velocity = velocity;
+            InitialPosition = initialPosition;
+            Velocity = initialVelocity;
             Acceleration = acceleration;
             Mass = mass;
         }
@@ -28,17 +28,6 @@ namespace NBodyProblem
         public Body(double mass)
         {
             Mass = mass;
-        }
-
-        public void Evolve(double dt)
-        {
-            var acceleration = NewtonsGravitationalLaw.Force(this, Neighbours) * dt / Mass;
-            var velocity_next = Velocity + acceleration * dt;
-            Acceleration = velocity_next - Velocity;
-            var position_next = Position + Velocity * dt;
-
-            Velocity = velocity_next.Clone();
-            Position = position_next.Clone();
         }
     }
 }

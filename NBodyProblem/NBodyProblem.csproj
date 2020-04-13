@@ -54,9 +54,12 @@
   <ItemGroup>
     <Compile Include="Body.cs" />
     <Compile Include="IMassPoint.cs" />
+    <Compile Include="InitialConfiguration.cs" />
+    <Compile Include="NBodyConfiguration.cs" />
     <Compile Include="NewtonsGravitationalLaw.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SolarSystem\Planet.cs" />
+    <Compile Include="SolarSystem\PlanetarySystem.cs" />
     <Compile Include="SolarSystem\SolarSystemHelper.cs" />
   </ItemGroup>
   <ItemGroup>
