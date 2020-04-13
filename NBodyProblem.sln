@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29905.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NBodyProblem", "NBodyProblem\NBodyProblem.csproj", "{DFD51CE8-57FE-4F53-8DA0-42598926E6B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simulation", "Simulation\Simulation.csproj", "{278867EB-AF3E-46A3-9EAF-34F7CB0D49AF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DFD51CE8-57FE-4F53-8DA0-42598926E6B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFD51CE8-57FE-4F53-8DA0-42598926E6B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFD51CE8-57FE-4F53-8DA0-42598926E6B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFD51CE8-57FE-4F53-8DA0-42598926E6B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{278867EB-AF3E-46A3-9EAF-34F7CB0D49AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{278867EB-AF3E-46A3-9EAF-34F7CB0D49AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{278867EB-AF3E-46A3-9EAF-34F7CB0D49AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{278867EB-AF3E-46A3-9EAF-34F7CB0D49AF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0D725F9C-92C7-4A3E-8B75-D21175981669}
+	EndGlobalSection
+EndGlobal
