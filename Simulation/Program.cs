@@ -11,7 +11,8 @@ namespace Simulation
     {
         static void Main(string[] args)
         {
-            var system = PlanetarySystem.Create(new List<String>() { "Earth" });                
+            var system = PlanetarySystem.Create(new List<String>() { "Earth" });
+            system.Evolve(10e-7);
         }
     }
 }

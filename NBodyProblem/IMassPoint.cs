@@ -9,9 +9,8 @@ namespace NBodyProblem
 {
     public interface IMassPoint
     {
-        Vector<double> Position { get; }
-        Vector<double> Velocity { get; }
-        Vector<double> Acceleration { get; }
+        PQState PQState { get; }
+        InitialValues InitialValues { get;}
         double Mass { get; }
     }
 }

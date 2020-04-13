@@ -10,6 +10,7 @@ namespace NBodyProblem.SolarSystem
     {
         private PlanetarySystem(Planets planets) : base(planets.ToBodies())
         {
+            Bodies.Add(new Sun());
         }
 
         public static PlanetarySystem Create(List<string> names)

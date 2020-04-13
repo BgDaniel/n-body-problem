@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NBodyProblem
 {
-    public abstract class NBodyConfiguration
+    public class NBodyConfiguration
     {
         public List<Body> Bodies { get; private set; }
 
@@ -27,11 +27,11 @@ namespace NBodyProblem
                     acceleration += NewtonsGravitationalLaw.Force(body, neighbour) * dt / body.Mass;
                 }
 
-                var newVelocity = body.Velocity + acceleration * dt;
-                body.Acceleration = newVelocity - body.Velocity;
-                var newPosition = body.Position + body.Velocity * dt;
-                body.Velocity = newVelocity.Clone();
-                body.Position = newPosition.Clone();
+                var newVelocity = body.PQState.Velocity + acceleration * dt;
+                body.PQState.Acceleration = newVelocity - body.PQState.Velocity;
+                var newPosition = body.PQState.Position + body.PQState.Velocity * dt;
+                body.PQState.Velocity = newVelocity.Clone();
+                body.PQState.Position = newPosition.Clone();
             }
         }
     }

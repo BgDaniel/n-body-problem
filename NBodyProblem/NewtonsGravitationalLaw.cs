@@ -15,7 +15,7 @@ namespace NBodyProblem
         {
             Vector<double> force = Vector<double>.Build.Dense(3);
 
-            var bodyToNeighbour = neighbour.Position - body.Position;
+            var bodyToNeighbour = neighbour.PQState.Position - body.PQState.Position;
             var distance = Math.Sqrt(bodyToNeighbour.Norm(2));
             force += GRAVITATIONAL_CONSTANT * body.Mass * neighbour.Mass * bodyToNeighbour / (distance * distance * distance);
 

@@ -16,7 +16,7 @@ namespace NBodyProblem.SolarSystem
         public const string diameter = nameof(diameter);
         public const string moons = nameof(moons);
 
-        public static Planets GetPlanets(List<String> names = null)
+        public static Planets GetPlanets(List<String> names = null, Dictionary<String, Tuple<InitialValues>> initialValues = null)
         {
             var planets = new Planets();
 

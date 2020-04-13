@@ -7,21 +7,44 @@ using System.Threading.Tasks;
 
 namespace NBodyProblem
 {
-    public class Body : IMassPoint
-    { 
+    public class PQState
+    {
         public Vector<double> Position { get; set; }
-        public Vector<double> InitialPosition { get; private set; }
         public Vector<double> Velocity { get; set; }
-        public Vector<double> InitialVelocity { get; private set; }
         public Vector<double> Acceleration { get; set; }
-        public double Mass { get; private set; }
 
+        public PQState(Vector<double> position, Vector<double> velocity, Vector<double> acceleration)
+        {
+            Position = position;
+            Velocity = velocity;
+            Acceleration = acceleration;
+        }
+    }
 
-        public Body(Vector<double> initialPosition, Vector<double> initialVelocity, Vector<double> acceleration, double mass)
+    public class InitialValues
+    {
+        public Vector<double> InitialPosition { get; set; }
+        public Vector<double> InitialVelocity { get; set; }
+        public Vector<double> InitialAcceleration { get; set; }
+
+        public InitialValues(Vector<double> initialPosition, Vector<double> initialVelocity, Vector<double> initialAcceleration)
         {
             InitialPosition = initialPosition;
-            Velocity = initialVelocity;
-            Acceleration = acceleration;
+            InitialVelocity = initialVelocity;
+            InitialAcceleration = initialAcceleration;
+        }
+    }
+
+    public class Body : IMassPoint
+    { 
+        public PQState PQState { get; set; }
+        public InitialValues InitialValues { get; set; }
+        public double Mass { get; private set; }
+
+        public Body(Vector<double> initialPosition, Vector<double> initialVelocity, Vector<double> initialAcceleration, double mass)
+        {
+            InitialValues = new InitialValues(initialPosition, initialVelocity, initialAcceleration);
+            PQState = new PQState(initialPosition.Clone(), initialVelocity.Clone(), initialAcceleration.Clone());
             Mass = mass;
         }
 
